@@ -2,8 +2,10 @@
   "name": "mern-todo-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://UberSim.github.io/SpoonList/",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "gh-pages": "^2.0.1",
     "jquery": ">=3.0.0",
     "popper.js": "^1.14.7",
     "react": "^16.8.6",
@@ -16,6 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
