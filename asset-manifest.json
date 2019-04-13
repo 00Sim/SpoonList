@@ -1,15 +1,15 @@
 {
-  "main.css": "/Spoonlist/static/css/main.7f5841f6.chunk.css",
-  "main.js": "/Spoonlist/static/js/main.e1b1e9ee.chunk.js",
-  "main.js.map": "/Spoonlist/static/js/main.e1b1e9ee.chunk.js.map",
-  "runtime~main.js": "/Spoonlist/static/js/runtime~main.f830f3d2.js",
-  "runtime~main.js.map": "/Spoonlist/static/js/runtime~main.f830f3d2.js.map",
-  "static/css/2.29796280.chunk.css": "/Spoonlist/static/css/2.29796280.chunk.css",
-  "static/js/2.d225ec5f.chunk.js": "/Spoonlist/static/js/2.d225ec5f.chunk.js",
-  "static/js/2.d225ec5f.chunk.js.map": "/Spoonlist/static/js/2.d225ec5f.chunk.js.map",
-  "index.html": "/Spoonlist/index.html",
-  "precache-manifest.2990c7abbe69c9dc8fceaf3f72bbeda1.js": "/Spoonlist/precache-manifest.2990c7abbe69c9dc8fceaf3f72bbeda1.js",
-  "service-worker.js": "/Spoonlist/service-worker.js",
-  "static/css/2.29796280.chunk.css.map": "/Spoonlist/static/css/2.29796280.chunk.css.map",
-  "static/css/main.7f5841f6.chunk.css.map": "/Spoonlist/static/css/main.7f5841f6.chunk.css.map"
+  "main.css": "/cheese/static/css/main.cd5667c0.chunk.css",
+  "main.js": "/cheese/static/js/main.96a4c10f.chunk.js",
+  "main.js.map": "/cheese/static/js/main.96a4c10f.chunk.js.map",
+  "runtime~main.js": "/cheese/static/js/runtime~main.7e0c2891.js",
+  "runtime~main.js.map": "/cheese/static/js/runtime~main.7e0c2891.js.map",
+  "static/css/2.8c9c4ff9.chunk.css": "/cheese/static/css/2.8c9c4ff9.chunk.css",
+  "static/js/2.d225ec5f.chunk.js": "/cheese/static/js/2.d225ec5f.chunk.js",
+  "static/js/2.d225ec5f.chunk.js.map": "/cheese/static/js/2.d225ec5f.chunk.js.map",
+  "index.html": "/cheese/index.html",
+  "precache-manifest.9bd463786bb79d0fffa6fa3886763d85.js": "/cheese/precache-manifest.9bd463786bb79d0fffa6fa3886763d85.js",
+  "service-worker.js": "/cheese/service-worker.js",
+  "static/css/2.8c9c4ff9.chunk.css.map": "/cheese/static/css/2.8c9c4ff9.chunk.css.map",
+  "static/css/main.cd5667c0.chunk.css.map": "/cheese/static/css/main.cd5667c0.chunk.css.map"
 }
