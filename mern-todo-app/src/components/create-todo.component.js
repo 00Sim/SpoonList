@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class CreateTodo extends Component {
 
@@ -6,14 +7,17 @@ export default class CreateTodo extends Component {
         super(props);
 
         this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
-        this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
-        this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
+        this.onChangeTodoImportance = this.onChangeTodoImportance.bind(this);
+        this.onChangeTodoPred_Spoon = this.onChangeTodoPred_Spoon.bind(this);
+        this.onChangeTodoActual_Spoon = this.onChangeTodoActual_Spoon.bind(this);
+        this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             todo_description: '',
-            todo_responsible: '',
-            todo_priority: '',
+            todo_importance: '',
+            todo_pred_spoon: 1,
+            todo_actual_spoon: 1,
             todo_completed: false
         }
     }
@@ -24,33 +28,59 @@ export default class CreateTodo extends Component {
         });
     }
 
-    onChangeTodoResponsible(e) {
+    onChangeTodoImportance(e) {
         this.setState({
-            todo_responsible: e.target.value
+            todo_importance: e.target.value
         });
     }
 
-    onChangeTodoPriority(e) {
+    onChangeTodoCompleted(e) {
         this.setState({
-            todo_priority: e.target.value
+            todo_completed: e.target.value
+        });
+    }
+
+    onChangeTodoPred_Spoon(e) {
+        this.setState({
+            todo_pred_spoon: e.target.value
+        });
+    }
+
+    onChangeTodoActual_Spoon(e) {
+        this.setState({
+            todo_actual_spoon: e.target.value
         });
     }
 
     onSubmit(e) {
-        e.preventDefault();
+         e.preventDefault();
 
-        console.log(`Form submitted:`);
-        console.log(`Todo Description: ${this.state.todo_description}`);
-        console.log(`Todo Responsible: ${this.state.todo_responsible}`);
-        console.log(`Todo Priority: ${this.state.todo_priority}`);
+         console.log(`Form submitted:`);
+         console.log(`Todo Description: ${this.state.todo_description}`);
+         console.log(`Todo Importance: ${this.state.todo_importance}`);
+         console.log(`Todo Actual Spoon: ${this.state.todo_actual_spoon}`);
+         console.log(`Todo Pred Spoon: ${this.state.todo_pred_spoon}`);
+         console.log(`Todo Priority: ${this.state.todo_priority}`);
 
-        this.setState({
-            todo_description: '',
-            todo_responsible: '',
-            todo_priority: '',
-            todo_completed: false
-        })
-    }
+         const newTodo = {
+             todo_description: this.state.todo_description,
+             todo_importance: this.state.todo_importance,
+             todo_pred_spoon: this.state.todo_pred_spoon,
+             todo_actual_spoon: this.state.todo_actual_spoon,
+             todo_completed: this.state.todo_completed
+         };
+
+         axios.post('http://localhost:4000/todos/add', newTodo)
+             .then(res => console.log(res.data));
+
+         this.setState({
+             todo_description: '',
+             todo_importance: 0,
+             todo_pred_spoon: 1,
+             todo_actual_spoon: 1,
+             todo_completed: false
+         })
+     }
 
     render() {
         return (
@@ -66,48 +96,13 @@ export default class CreateTodo extends Component {
                                 />
                     </div>
                     <div className="form-group">
-                        <label>Responsible: </label>
+                        <label>Importance: </label>
                         <input
-                                type="text"
+                                type="Number"
                                 className="form-control"
-                                value={this.state.todo_responsible}
-                                onChange={this.onChangeTodoResponsible}
+                                value={this.state.todo_importance}
+                                onChange={this.onChangeTodoImportance}
                                 />
-                    </div>
-                    <div className="form-group">
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="priorityOptions"
-                                    id="priorityLow"
-                                    value="Low"
-                                    checked={this.state.todo_priority==='Low'}
-                                    onChange={this.onChangeTodoPriority}
-                                    />
-                            <label className="form-check-label">Low</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="priorityOptions"
-                                    id="priorityMedium"
-                                    value="Medium"
-                                    checked={this.state.todo_priority==='Medium'}
-                                    onChange={this.onChangeTodoPriority}
-                                    />
-                            <label className="form-check-label">Medium</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="priorityOptions"
-                                    id="priorityHigh"
-                                    value="High"
-                                    checked={this.state.todo_priority==='High'}
-                                    onChange={this.onChangeTodoPriority}
-                                    />
-                            <label className="form-check-label">High</label>
-                        </div>
                     </div>
 
                     <div className="form-group">
