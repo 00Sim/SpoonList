@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+const request = require('request')
 
 export default class CreateTodo extends Component {
 
@@ -15,7 +15,7 @@ export default class CreateTodo extends Component {
 
         this.state = {
             todo_description: '',
-            todo_importance: '',
+            todo_importance: 0,
             todo_pred_spoon: 1,
             todo_actual_spoon: 1,
             todo_completed: false
@@ -60,7 +60,7 @@ export default class CreateTodo extends Component {
          console.log(`Todo Importance: ${this.state.todo_importance}`);
          console.log(`Todo Actual Spoon: ${this.state.todo_actual_spoon}`);
          console.log(`Todo Pred Spoon: ${this.state.todo_pred_spoon}`);
-         console.log(`Todo Priority: ${this.state.todo_priority}`);
+         console.log(`Todo Completed: ${this.state.todo_completed}`);
 
          const newTodo = {
              todo_description: this.state.todo_description,
@@ -70,8 +70,16 @@ export default class CreateTodo extends Component {
              todo_completed: this.state.todo_completed
          };
 
-         axios.post('http://localhost:4000/todos/add', newTodo)
-             .then(res => console.log(res.data));
+         request.post('http://localhost:8080/add', {
+            json: newTodo
+          }, (error, res, body) => {
+            if (error) {
+              console.error(error)
+              return
+            }
+            console.log(`statusCode: ${res.statusCode}`)
+            console.log(body)
+          });
 
          this.setState({
              todo_description: '',
@@ -95,6 +103,7 @@ export default class CreateTodo extends Component {
                                 onChange={this.onChangeTodoDescription}
                                 />
                     </div>
+
                     <div className="form-group">
                         <label>Importance: </label>
                         <input

@@ -21,12 +21,20 @@ http.createServer((request, response) => {
     body = Buffer.concat(body).toString();
     console.log(body);
 
-    if (request.method === 'POST' && request.url === '/add') {
+    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    response.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT,OPTIONS');
+    response.setHeader('Access-Control-Allow-Headers', 'X-PINGOTHER, Content-Type');
+    response.setHeader('Access-Control-Max-Age', '86400');
+
+    if (request.method === 'OPTIONS') {
+      response.statusCode = 204;
+      response.end();
+    } if (request.method === 'POST' && request.url === '/add') {
       let todo = new Todo(JSON.parse(body));
       todo.save()
           .then(todo => {
-              response.statusCode = 200;
-              response.end('todo added successfully');
+            response.statusCode = 200;
+            response.end('todo added successfully');
           })
           .catch(err => {
             response.statusCode = 400;
